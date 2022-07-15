@@ -2,6 +2,7 @@
 
 namespace App\Http\Service;
 
+use App\Models\CheckRecord;
 use Echeck\Echeck;
 use Exception;
 
@@ -13,6 +14,7 @@ class CommonService
     {
         try{
             Echeck::setToken("LmB7FXlU4KMCVle9IWccQmgsFUhaggEhQPUXK6sw5egQZlRUaGE2nK3EpLmq");
+            // Echeck::setToken('EiZNSqeKYpMcIZbEn3KFLDyNGKtMa7b6orEKro013a7v9TFZ6KYiOmL6QWM7');
             Echeck::setEnviroment("SANDBOX");
             $this->echeck = new Echeck();
         }catch(Exception $e){
@@ -43,7 +45,7 @@ class CommonService
             "PayeeName" => $data['payee_name'] ,
             "Amount"    => $data['amount'] ,
             "Memo"    => $data['memo'] ,
-            "BankAccountId"    => $data['bankaccount'] ,
+            "BankAccountId"    =>  $data['bankaccount'] ,
             "Address1"    => $data['address1'] ,
             "Address2"    => $data['address2'] ,
             "City"    => $data['city'] ,
@@ -55,7 +57,13 @@ class CommonService
 
         try {
             $response =  $this->echeck->mailAcheck($send_data);
-            return response()->json($response,$e->getCode());
+            CheckRecord::create([
+                "type" => 1 ,
+                "status" => "new" ,
+                "data"   => json_encode($send_data) ,
+                "check_id" => $response['CheckId']
+            ]);
+            return response()->json($response,200);
         } catch (Exception $e) {
             return response()->json(["success" => false , "error" => $e->getMessage()],$e->getCode());
         }

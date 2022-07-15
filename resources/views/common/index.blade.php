@@ -121,9 +121,8 @@
             switch(String(type)){
                 case "1" : route = "{{route('mail.sent')}} "; break ;
                 case "2" : route = "{{route('email.sent')}}" ; break ;
-                default : route = "asheek"
             }
-
+            console.log(route);
             let data = $('#check_form').serialize() ;
 
             $.ajax({

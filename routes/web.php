@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CommonController;
+use App\Http\Controllers\EmailCheckController;
+use App\Http\Controllers\MailCheckController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/index',[CommonController::class,"index"])->name('check.index');
+
+Route::post('/mail',[MailCheckController::class,"sendMail"])->name('mail.sent');
+Route::post('email',[EmailCheckController::class,"sendEmail"])->name('email.sent');

@@ -28,8 +28,7 @@ class CommonController extends Controller
 
     public function getCheckList(Request $request,CommonService $service)
     {
-        $search_params = [];
-        return $service->getCheckList($search_params);
+        return $service->getCheckList($request->all());
     }
 
     public function voidCheck($id,CommonService $service)

@@ -7,6 +7,7 @@
         <button type="button" class="btn btn-info" onclick="redirect(3)">Webhook History</button>
     </div>
 
+    @include('check-records.search')
     @include('check-records.index')
     @include('check-records.statement-modal')
 @endsection
@@ -37,7 +38,7 @@
         function getCheckList(search = ""){
             $.ajax({
                 url : "{{route('check.list')}}" ,
-                data : "" ,
+                data : search ,
                 type : "get" ,
                 success:function(result){
                     if(result.data){
@@ -140,13 +141,25 @@
                 type : "get" ,
                 success:function(result){
                     if(result){
-                       window.location = result.data ;
+                        window.open(result.data.file,'_blank')
                     }
                 },
                 error:function(){
                     alert("Something went wrong");
                 }
             })
+        }
+
+
+        // search functions
+
+        function searchCheck()
+        {
+            var category = $('#search-category').val()
+            let term     = $('#search-term').val()
+            search_term = { [category]: term};
+
+            getCheckList(search_term);
         }
     </script>
 @endsection

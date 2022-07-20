@@ -2075,7 +2075,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sellowpayAsheek/echecks-ai",
-                "reference": "e7c23c7f1d3148bf815806a91a1d488649a943d6"
+                "reference": "6d1a9271d0ce52516ef6b9b2e4f9c97e49962f01"
             },
             "require": {
                 "guzzlehttp/guzzle": "7.4.5",
@@ -2119,7 +2119,7 @@
                 "web service",
                 "wrapper"
             ],
-            "time": "2022-07-20T09:29:22+00:00"
+            "time": "2022-07-20T13:10:28+00:00"
         },
         {
             "name": "opis/closure",

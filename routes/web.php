@@ -24,3 +24,7 @@ Route::get('/index',[CommonController::class,"index"])->name('check.index');
 
 Route::post('/mail',[MailCheckController::class,"sendMail"])->name('mail.sent');
 Route::post('email',[EmailCheckController::class,"sendEmail"])->name('email.sent');
+
+Route::get('/record',[CommonController::class,"getRecords"])->name('check.record');
+
+Route::webhooks('webhook-receiving-url');

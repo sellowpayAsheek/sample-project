@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c61ff82cbf0142a401a48a8161e1595a",
+    "content-hash": "2dccde74a9fe46609c838f5a9f6c52eb",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2070,6 +2070,58 @@
             "time": "2022-05-31T20:59:12+00:00"
         },
         {
+            "name": "ocw/echecks-ai-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sellowpayAsheek/echecks-ai",
+                "reference": "c65665b1d1bfd2bcbfcd587887871e0510eec589"
+            },
+            "require": {
+                "guzzlehttp/guzzle": "7.4.5",
+                "php": ">=7.4.0"
+            },
+            "require-dev": {
+                "dompdf/dompdf": "2.0.0",
+                "phpunit/phpunit": "9.5.*",
+                "satooshi/php-coveralls": "2.*||1.*"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Echeck\\": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ocw",
+                    "email": "support@onlinecheckwriter.com",
+                    "homepage": "https://onlinecheckwriter.com"
+                }
+            ],
+            "description": "echecks-ai API PHP wrapper.",
+            "homepage": "https://www.echecks.ai/",
+            "keywords": [
+                "api",
+                "e-checks",
+                "ocw",
+                "printing",
+                "rest",
+                "web service",
+                "wrapper"
+            ],
+            "time": "2022-07-15T11:17:05+00:00"
+        },
+        {
             "name": "opis/closure",
             "version": "3.6.3",
             "source": {
@@ -2860,6 +2912,73 @@
                 }
             ],
             "time": "2021-09-25T23:10:38+00:00"
+        },
+        {
+            "name": "spatie/laravel-webhook-client",
+            "version": "2.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-webhook-client.git",
+                "reference": "ff52ee0ca6edbb1acd62c083877bceba35f40f93"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-webhook-client/zipball/ff52ee0ca6edbb1acd62c083877bceba35f40f93",
+                "reference": "ff52ee0ca6edbb1acd62c083877bceba35f40f93",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/bus": "^8.0",
+                "illuminate/database": "^8.0",
+                "illuminate/support": "^8.0",
+                "php": "^8.0|^7.4"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0",
+                "phpunit/phpunit": "^9.3.8"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\WebhookClient\\WebhookClientServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\WebhookClient\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Receive webhooks in Laravel apps",
+            "homepage": "https://github.com/spatie/laravel-webhook-client",
+            "keywords": [
+                "laravel-webhook-client",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-webhook-client/issues",
+                "source": "https://github.com/spatie/laravel-webhook-client/tree/2.8.0"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                }
+            ],
+            "time": "2022-04-07T22:55:11+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -7912,7 +8031,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "ocw/echecks-ai-php": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

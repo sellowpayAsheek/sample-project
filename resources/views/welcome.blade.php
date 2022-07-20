@@ -20,6 +20,10 @@
             if(type == 2){
                 window.location = "{{route('check.index')}}?type=email"
             }
+
+            if(type == 3){
+                window.location = "{{route('check.record')}}"
+            }
         }
     </script>
 @endsection

@@ -25,14 +25,14 @@
                     <select id="inputState" name="bankaccount" class="form-control">
                     <option selected>Select bank account</option>
                         @foreach ($accounts as $account)
-                            <option id="{{$account['id']}}">{{$account['name']}}</option>
+                            <option value="{{$account['id']}}">{{$account['name']}}</option>
                         @endforeach
                     </select>
                 </div>
 
                 <div class="form-group col-md-6">
                     <label for="amount">amount</label>
-                    <input type="Number" class="form-control" id="amount" placeholder="Amount">
+                    <input type="Number" class="form-control" name="amount" id="amount" placeholder="Amount">
                 </div>
 
                 <div class="form-group col-md-6">
@@ -41,12 +41,18 @@
                 </div>
 
                 <div class="row">
-                    <div class="form-group col-md-6">
+
+                    <div class="form-group col-md-4">
+                        <label for="payee_name">Payee name</label>
+                        <input type="text" name="payee_name" class="form-control" id="payee_name" placeholder="Payee name">
+                    </div>
+
+                    <div class="form-group col-md-4">
                         <label for="address1">Address line 1</label>
                         <input type="text" name="address1" class="form-control" id="address1" placeholder="address line 1">
                     </div>
 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label for="address2">Address line 2</label>
                         <input type="text" name="address2" class="form-control" id="address2" placeholder="address line 2">
                     </div>
@@ -77,7 +83,8 @@
                         <div class="form-group col-md-4">
                             <label for="shipping">Shipping Type</label>
                             <select id="shipping" name="shipping" class="form-control">
-
+                                <option value="1" checked>First class</option>
+                                <option value="5">Express mail</option>
                             </select>
                         </div>
                     </div>
@@ -98,7 +105,7 @@
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
             </div>
         </form>
-            <button type="button" onclick="sendCheck('{{$number}}')" class="btn btn-primary">{{$button}}</button>
+            <button type="button" style="float:right;" onclick="sendCheck('{{$number}}')" class="btn btn-primary">{{$button}}</button>
 
     </div>
 @endsection
@@ -114,9 +121,8 @@
             switch(String(type)){
                 case "1" : route = "{{route('mail.sent')}} "; break ;
                 case "2" : route = "{{route('email.sent')}}" ; break ;
-                default : route = "asheek"
             }
-
+            console.log(route);
             let data = $('#check_form').serialize() ;
 
             $.ajax({
@@ -124,11 +130,16 @@
                 type : "post" ,
                 url  : route ,
                 success : function(result){
-                    console.log(result);
+                    if(result){
+                        alert("Success");
+                        setTimeout(() => {
+                            location.reload()
+                        }, 3000);
+                    }
                 },
                 error:function()
                 {
-                    // alert("something went wrong");
+                    alert("something went wrong");
                 }
             })
         }

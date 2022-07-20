@@ -1,5 +1,5 @@
-<div class="container">
-    <div class="row">
+<div style="width:90% ; margin-left:auto;margin-right:auto">
+
         <table class="table table-bordered table-hover" id="checkListTable">
             <thead class="thead-dark">
                 <tr>
@@ -17,5 +17,5 @@
             <tbody>
             </tbody>
         </table>
-    </div>
+
 </div>

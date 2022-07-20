@@ -31,4 +31,19 @@ class CommonController extends Controller
         $search_params = [];
         return $service->getCheckList($search_params);
     }
+
+    public function voidCheck($id,CommonService $service)
+    {
+        return $service->voidACheck($id);
+    }
+
+    public function viewCheck($id,CommonService $service)
+    {
+        return $service->viewACheck($id);
+    }
+
+    public function printCheck($id,CommonService $service)
+    {
+        return $service->printCheck($id);
+    }
 }

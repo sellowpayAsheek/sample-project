@@ -77,4 +77,31 @@ class CommonService
             return response()->json(["success" => false , "error" => $e->getMessage()],$e->getCode());
         }
     }
+
+    public function voidACheck($id)
+    {
+        try {
+            return $this->echeck->voidCheck($id);
+        } catch (Exception $e) {
+            return response()->json(["success" => false , "error" => $e->getMessage()],$e->getCode());
+        }
+    }
+
+    public function viewACheck($id)
+    {
+        try {
+            return $this->echeck->viewCheckStatement($id);
+        } catch (Exception $e) {
+            return response()->json(["success" => false , "error" => $e->getMessage()],$e->getCode());
+        }
+    }
+
+    public function printCheck($id)
+    {
+        try {
+            return $this->echeck->viewCheckPdf($id);
+        } catch (Exception $e) {
+            return response()->json(["success" => false , "error" => $e->getMessage()],$e->getCode());
+        }
+    }
 }

@@ -29,4 +29,8 @@ Route::get('/record',[CommonController::class,"getRecords"])->name('check.record
 
 Route::get('/list',[CommonController::class,"getCheckList"])->name('check.list');
 
+Route::post('/void/{id}',[CommonController::class,"voidCheck"])->name('check.void');
+Route::get('/view/{id}',[CommonController::class,"viewCheck"])->name('check.view');
+Route::get('/print/{id}',[CommonController::class,"printCheck"])->name('check.print');
+
 Route::webhooks('webhook-receiving-url');

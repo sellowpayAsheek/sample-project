@@ -133,8 +133,8 @@
                     if(result){
                         alert("Success");
                         setTimeout(() => {
-                            location.reload()
-                        }, 3000);
+                            window.location = "{{url('/')}}"
+                        }, 1000);
                     }
                 },
                 error:function()

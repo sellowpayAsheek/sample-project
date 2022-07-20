@@ -14,7 +14,7 @@ class CommonService
     {
         try{
             Echeck::setToken("LmB7FXlU4KMCVle9IWccQmgsFUhaggEhQPUXK6sw5egQZlRUaGE2nK3EpLmq");
-            // Echeck::setToken('EiZNSqeKYpMcIZbEn3KFLDyNGKtMa7b6orEKro013a7v9TFZ6KYiOmL6QWM7');
+            // Echeck::setToken('EiZNSqeKYpMcIZbEn3KFLDyNGKtMa7b6orEKro013a7v9TFZ6KYiOmL6QWM7');                           //local
             Echeck::setEnviroment("SANDBOX");
             $this->echeck = new Echeck();
         }catch(Exception $e){
@@ -64,6 +64,67 @@ class CommonService
                 "check_id" => $response['CheckId']
             ]);
             return response()->json($response,200);
+        } catch (Exception $e) {
+            return response()->json(["success" => false , "error" => $e->getMessage()],$e->getCode());
+        }
+    }
+
+    public function sendEMail(array $data)
+    {
+        $send_data = [
+            "PayeeName" => $data['payee_name'] ,
+            "Amount"    => $data['amount'] ,
+            "Memo"    => $data['memo'] ,
+            "BankAccountId"    =>  $data['bankaccount'] ,
+            "EmailAddress"     => $data['email']
+        ];
+
+        try {
+            $response =  $this->echeck->emailAcheck($send_data);
+            CheckRecord::create([
+                "type" => 2 ,
+                "status" => "new" ,
+                "data"   => json_encode($send_data) ,
+                "check_id" => $response['CheckId']
+            ]);
+            return response()->json($response,200);
+        } catch (Exception $e) {
+            return response()->json(["success" => false , "error" => $e->getMessage()],$e->getCode());
+        }
+
+    }
+
+    public function getCheckList($search_params)
+    {
+        try {
+            return $this->echeck->getCheckList($search_params);
+        } catch (Exception $e) {
+            return response()->json(["success" => false , "error" => $e->getMessage()],$e->getCode());
+        }
+    }
+
+    public function voidACheck($id)
+    {
+        try {
+            return $this->echeck->voidCheck($id);
+        } catch (Exception $e) {
+            return response()->json(["success" => false , "error" => $e->getMessage()],$e->getCode());
+        }
+    }
+
+    public function viewACheck($id)
+    {
+        try {
+            return $this->echeck->viewCheckStatement($id);
+        } catch (Exception $e) {
+            return response()->json(["success" => false , "error" => $e->getMessage()],$e->getCode());
+        }
+    }
+
+    public function printCheck($id)
+    {
+        try {
+            return $this->echeck->viewCheckPdf($id);
         } catch (Exception $e) {
             return response()->json(["success" => false , "error" => $e->getMessage()],$e->getCode());
         }

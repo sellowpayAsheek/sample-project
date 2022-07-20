@@ -1,5 +1,9 @@
 @extends('layouts.default')
 
+@section('asset_load')
+    @include('pagination.style')
+@endsection
+
 @section('content')
     <div class="container" style="padding: 25px; display:flex;flex-direction:row;justify-content:space-evenly;">
         <button  type="button" class="btn btn-primary" onclick="redirect(1)">Send Check Mail</button>
@@ -10,6 +14,12 @@
     @include('check-records.search')
     @include('check-records.index')
     @include('check-records.statement-modal')
+
+    <div id="wrapper">
+        <ul id="pagination">
+            {{-- li list dynamic --}}
+        </ul>
+      </div>
 @endsection
 
 
@@ -63,6 +73,7 @@
                             </tr>`;
                         });
 
+                        setPagination(result);
                         $('#checkListTable tbody').append(html);
                     }
                 },
@@ -161,5 +172,32 @@
 
             getCheckList(search_term);
         }
+
+        function nextPage(page)
+        {
+            var search_term = {"page" : page};
+            getCheckList(search_term);
+        }
+
+        function setPagination(result)
+        {
+            $('#wrapper #pagination').html('')
+            pagination_html = "" ;
+
+            current_page = result.current_page ;
+            last_page = result.last_page ;
+
+            for(i = 1 ; i <= last_page ; i++){
+
+                if(i == current_page){
+                    pagination_html += `<li><a class="active" onclick="nextPage('${i}')">${i}</a></li>`
+                }else{
+                    pagination_html += `<li><a onclick="nextPage('${i}')">${i}</a></li>`
+                }
+            }
+
+            $('#wrapper #pagination').append(pagination_html);
+        }
+
     </script>
 @endsection

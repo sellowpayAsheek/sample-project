@@ -69,6 +69,31 @@ class CommonService
         }
     }
 
+    public function sendEMail(array $data)
+    {
+        $send_data = [
+            "PayeeName" => $data['payee_name'] ,
+            "Amount"    => $data['amount'] ,
+            "Memo"    => $data['memo'] ,
+            "BankAccountId"    =>  $data['bankaccount'] ,
+            "EmailAddress"     => $data['email']
+        ];
+
+        try {
+            $response =  $this->echeck->emailAcheck($send_data);
+            CheckRecord::create([
+                "type" => 2 ,
+                "status" => "new" ,
+                "data"   => json_encode($send_data) ,
+                "check_id" => $response['CheckId']
+            ]);
+            return response()->json($response,200);
+        } catch (Exception $e) {
+            return response()->json(["success" => false , "error" => $e->getMessage()],$e->getCode());
+        }
+
+    }
+
     public function getCheckList($search_params)
     {
         try {

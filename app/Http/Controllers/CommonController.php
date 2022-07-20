@@ -22,7 +22,7 @@ class CommonController extends Controller
 
     public function getRecords()
     {
-        $records = CheckRecord::all();
+        $records = CheckRecord::orderBy('id','desc')->get();
         return view('common.record',["records" => $records]);
     }
 

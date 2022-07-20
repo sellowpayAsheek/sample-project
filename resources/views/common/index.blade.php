@@ -134,7 +134,7 @@
                         alert("Success");
                         setTimeout(() => {
                             window.location = "{{url('/')}}"
-                        }, 3000);
+                        }, 1000);
                     }
                 },
                 error:function()

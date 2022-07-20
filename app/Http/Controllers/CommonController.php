@@ -25,4 +25,10 @@ class CommonController extends Controller
         $records = CheckRecord::all();
         return view('common.record',["records" => $records]);
     }
+
+    public function getCheckList(Request $request,CommonService $service)
+    {
+        $search_params = [];
+        return $service->getCheckList($search_params);
+    }
 }

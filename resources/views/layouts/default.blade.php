@@ -63,6 +63,14 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+
+        function alertError(xhr,exception = null)
+        {
+            response = xhr.responseJSON ;
+            error = response.error ;
+            alert(error);
+        }
+
     </script>
 
     @yield('page_js')

@@ -52,7 +52,8 @@ class CommonService
             "State"    => $data['state'] ,
             "Zip"    => $data['zip'] ,
             "Country"   => $data['country'] ,
-            "MailType" => $data['shipping']
+            "MailType" => $data['shipping'] ,
+            "AttachmentUrl" => $data['attachment_url'] ?? ""
         ];
 
         try {
@@ -76,7 +77,8 @@ class CommonService
             "Amount"    => $data['amount'] ,
             "Memo"    => $data['memo'] ,
             "BankAccountId"    =>  $data['bankaccount'] ,
-            "EmailAddress"     => $data['email']
+            "EmailAddress"     => $data['email'] ,
+            "AttachmentUrl" => $data['attachment_url'] ?? ""
         ];
 
         try {

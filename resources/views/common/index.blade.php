@@ -77,9 +77,8 @@
                     </div>
                 </div>
 
-                @if (request()->get('type') == "mail")
-
-                    <div class="row">
+                <div class="row">
+                    @if (request()->get('type') == "mail")
                         <div class="form-group col-md-4">
                             <label for="shipping">Shipping Type</label>
                             <select id="shipping" name="shipping" class="form-control">
@@ -87,20 +86,21 @@
                                 <option value="5">Express mail</option>
                             </select>
                         </div>
-                    </div>
+                        <div class="col-md-2"></div>
+                    @endif
 
-                @endif
-
-                @if (request()->get('type') == "email")
-
-                    <div class="row">
+                    @if (request()->get('type') == "email")
                         <div class="form-group col-md-6">
                             <label for="email address">email address</label>
                             <input type="email" name="email" class="form-control" id="email address" placeholder="email address">
                         </div>
-                    </div>
+                    @endif
 
-                @endif
+                    <div class="col-md-6">
+                        <label for="attachment">Attachment Url</label>
+                        <input type="text" name="attachment_url" class="form-control" id="attachment" placeholder="Attachment url">
+                    </div>
+                </div>
 
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
             </div>
@@ -122,7 +122,7 @@
                 case "1" : route = "{{route('mail.sent')}} "; break ;
                 case "2" : route = "{{route('email.sent')}}" ; break ;
             }
-            console.log(route);
+
             let data = $('#check_form').serialize() ;
 
             $.ajax({
@@ -137,9 +137,9 @@
                         }, 1000);
                     }
                 },
-                error:function()
+                error:function(xhr,exception)
                 {
-                    alert("something went wrong");
+                    alertError(xhr);
                 }
             })
         }

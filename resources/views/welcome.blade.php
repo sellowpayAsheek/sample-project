@@ -77,8 +77,8 @@
                         $('#checkListTable tbody').append(html);
                     }
                 },
-                error:function(){
-                    alert('Something went wrong. Cannot load check list')
+                error:function(xhr,exception){
+                    alertError(xhr);
                 }
             });
         }
@@ -103,8 +103,8 @@
                         getCheckList();
                     }
                 },
-                error:function(){
-                    alert("Something went wrong");
+                error:function(xhr,exception){
+                    alertError(xhr);
                 }
             })
         }
@@ -135,8 +135,8 @@
                         $('#statementbody table tbody').append(html);
                     }
                 },
-                error:function(){
-                    alert("Something went wrong");
+                error:function(xhr,exception){
+                    alertError(xhr);
                 }
             })
         }
@@ -155,8 +155,8 @@
                         window.open(result.data.file,'_blank')
                     }
                 },
-                error:function(){
-                    alert("Something went wrong");
+                error:function(xhr,exception){
+                    alertError(xhr);
                 }
             })
         }

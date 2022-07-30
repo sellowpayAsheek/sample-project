@@ -13,7 +13,7 @@ class CommonService
     public function __construct()
     {
         try{
-            Echeck::setToken("LmB7FXlU4KMCVle9IWccQmgsFUhaggEhQPUXK6sw5egQZlRUaGE2nK3EpLmq");
+            Echeck::setToken("68e3f0GqQLWoGqf0bNMRPr8gLwnPR6btOZx2t6UQdhnPHizDwjYztrKGeG23");
             // Echeck::setToken('EiZNSqeKYpMcIZbEn3KFLDyNGKtMa7b6orEKro013a7v9TFZ6KYiOmL6QWM7');                           //local
             Echeck::setEnviroment("SANDBOX");
             $this->echeck = new Echeck();

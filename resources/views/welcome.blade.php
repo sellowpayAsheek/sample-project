@@ -57,9 +57,9 @@
 
                         data = result.data ;
                         $.each(data,function(i,j){
-                            action = `<span onclick="voidCheck('${j.id}')" style="" title = "void"><i class="fa fa-times" aria-hidden="true"></i></span>
-                                        <span onclick="viewCheck('${j.id}')" title = "View check statements"><i class="fa fa-eye" aria-hidden="true"></i></span>
-                                        <span onclick="printCheck('${j.id}')" title = "Print Check"><i class="fa fa-print" aria-hidden="true"></i></span>` ;
+                            action = `<span onclick="voidCheck('${j.id}')" style="cursor:pointer" title = "void"><i class="fa fa-times" aria-hidden="true"></i></span>
+                                        <span onclick="viewCheck('${j.id}')" style="cursor:pointer" title = "View check statements"><i class="fa fa-eye" aria-hidden="true"></i></span>
+                                        <span onclick="printCheck('${j.id}')" style="cursor:pointer" title = "Print Check"><i class="fa fa-print" aria-hidden="true"></i></span>` ;
                             html += `<tr>
                                 <th scope="row">${j.id}</th>
                                 <td>${j.payeeName}</td>
